@@ -6,6 +6,14 @@ Application::Application() {
 	m_window.create(sf::VideoMode(1000, 600), "SnekGame", sf::Style::Close);
 }
 
+void Application::update(float deltaTime) {
+	
+}
+
+void Application::render() {
+	
+}
+
 void Application::run() {
 	while (m_window.isOpen()) {
 		sf::Event evnt;
@@ -15,6 +23,8 @@ void Application::run() {
 			}
 		}
 		m_window.clear();
+		update(1);
+		render();
 		m_window.display();
 	}
 }
