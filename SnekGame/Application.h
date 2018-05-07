@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Position.h"
+#include "data.h"
+#include "Snek.h"
 
 class Application
 {
@@ -14,6 +15,8 @@ private:
 	void render();
 private:
 	sf::RenderWindow m_window;
-	
+	sf::Vector2i     m_board[cellNumberX][cellNumberY];
+	Snek shnek;
+	sf::Clock m_updateClock;
 };
 
