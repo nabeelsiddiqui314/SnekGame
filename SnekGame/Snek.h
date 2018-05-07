@@ -35,7 +35,6 @@ public:
 	void move(const sf::Vector2i& deltaPos);
 	void render(sf::RenderWindow& window);
 private:
-	std::array<Segment, cellNumberX * cellNumberY> m_snek;
-	int m_snekLength = 1; // length - 1 for array indecies
+	std::vector<Segment> m_snek;
 
 };

@@ -17,6 +17,7 @@ private:
 	sf::RenderWindow m_window;
 	sf::Vector2i     m_board[cellNumberX][cellNumberY];
 	Snek shnek;
+	sf::Vector2i m_velocity = {0, 0};
 	sf::Clock m_updateClock;
 };
 

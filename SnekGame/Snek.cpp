@@ -44,28 +44,25 @@ void Snek::Segment::render(sf::RenderWindow& window) {
 }
 
 Snek::Snek() {
+	m_snek.emplace_back();
+	m_snek.emplace_back();
 	m_snek[0].setPosition({cellWidth * 5, cellWidth * 5});
 	m_snek[1].setPosition({ cellWidth * 4, cellWidth * 5 });
 }
 
 void Snek::grow(int segments) {
-	if (m_snekLength < (cellNumberX * cellNumberY)) {
-		m_snekLength += segments;
-	}
-	//for (int i = m_snekLength; i > m_snekLength - segments; i--) {
-		
-	//}
+	m_snek.emplace_back();
 }
 
 void Snek::move(const sf::Vector2i& deltaPos) {
-	for (int i = m_snekLength; i > 0; i--) {
+	for (int i = m_snek.size() -1; i > 0; i--) {
 		m_snek[i].follow(m_snek[i-1]);
 	}
 	m_snek[0].changePos(deltaPos);
 }
 
 void Snek::render(sf::RenderWindow& window) {
-	for (int i = 0; i <= m_snekLength; i++) {
+	for (int i = 0; i < m_snek.size(); i++) {
 		m_snek[i].render(window);
 	}
 }

@@ -14,8 +14,23 @@ Application::Application() {
 
 void Application::update(float deltaTime) {
 	if (m_updateClock.getElapsedTime().asSeconds() > 0.2) {
-		shnek.move({ 1, 0 });
-		//shnek.grow(1);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+			m_velocity = { 0, -1 };
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+			m_velocity = { -1, 0 };
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+			m_velocity = { 0, 1 };
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+			m_velocity = { 1, 0 };
+		}
+		shnek.move(m_velocity);
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
+			shnek.grow(1);
+		}
 		m_updateClock.restart();
 	}
 }

@@ -1,5 +1,5 @@
 #pragma once
 
-constexpr int cellWidth = 50;
-constexpr int cellNumberX = 20;
-constexpr int cellNumberY = 12;
+constexpr int cellWidth = 10;
+constexpr int cellNumberX = 100;
+constexpr int cellNumberY = 60;
