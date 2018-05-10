@@ -13,30 +13,30 @@ Application::Application() {
 }
 
 void Application::update(float deltaTime) {
-	if (m_updateClock.getElapsedTime().asSeconds() > 0.2) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-			m_velocity = { 0, -1 };
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-			m_velocity = { -1, 0 };
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			m_velocity = { 0, 1 };
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-			m_velocity = { 1, 0 };
-		}
-		shnek.move(m_velocity);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+		m_velocity = { 0, -1 };
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+		m_velocity = { -1, 0 };
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+		m_velocity = { 0, 1 };
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+		m_velocity = { 1, 0 };
+	}
 
+	if (m_updateClock.getElapsedTime().asSeconds() > 0.2) {
+		snek.move(m_velocity);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
-			shnek.grow(1);
+			snek.grow();
 		}
 		m_updateClock.restart();
 	}
 }
 
 void Application::render() {
-	shnek.render(m_window);
+	snek.render(m_window);
 }
 
 void Application::run() {

@@ -14,7 +14,6 @@ Snek::Segment::Segment() {
 	m_segment.setTexture(&s_texture);
 
 	//temp
-	m_segment.setFillColor(sf::Color::Green);
 }
 
 void Snek::Segment::changePos(const sf::Vector2i& deltaPos) {
@@ -27,7 +26,17 @@ void Snek::Segment::follow(const Segment& other) {
 }
 
 void Snek::Segment::setType(const Type& type) {
-
+	switch (type) {
+	case HEAD:
+		m_segment.setFillColor(sf::Color::Blue);
+		break;
+	case BODY:
+		m_segment.setFillColor(sf::Color::Green);
+		break;
+	case TAIL:
+		m_segment.setFillColor(sf::Color::Red);
+		break;
+	}
 }
 
 void Snek::Segment::setPosition(const sf::Vector2f& pos) {
@@ -48,13 +57,25 @@ Snek::Snek() {
 	m_snek.emplace_back();
 	m_snek[0].setPosition({cellWidth * 5, cellWidth * 5});
 	m_snek[1].setPosition({ cellWidth * 4, cellWidth * 5 });
+	m_snek[0].setType(Segment::HEAD);
+	m_snek[1].setType(Segment::TAIL);
 }
 
-void Snek::grow(int segments) {
+void Snek::grow() {
 	m_snek.emplace_back();
+
+	int last_val = m_snek.size() - 1;
+
+	m_snek[last_val].setPosition(m_snek[last_val - 1].getPosition());
+
+	m_snek[last_val - 1].setType(Segment::BODY);
+	m_snek[last_val].setType(Segment::TAIL);
 }
 
 void Snek::move(const sf::Vector2i& deltaPos) {
+	if (deltaPos.x == 0 && deltaPos.y == 0)
+		return;
+
 	for (int i = m_snek.size() -1; i > 0; i--) {
 		m_snek[i].follow(m_snek[i-1]);
 	}

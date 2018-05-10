@@ -31,7 +31,7 @@ public:
 	Snek();
 	~Snek() = default;
 public:
-	void grow(int segments);
+	void grow();
 	void move(const sf::Vector2i& deltaPos);
 	void render(sf::RenderWindow& window);
 private:
