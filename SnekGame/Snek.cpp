@@ -56,6 +56,7 @@ void Snek::move(const sf::Vector2i& deltaPos, Board* brd) {
 		return;
 
 	brd->setCellColor(m_snek[m_snek.size() - 1].getPosition(), sf::Color::White);
+	brd->setCellID(m_snek[m_snek.size() - 1].getPosition(), 0);
 
 	for (int i = m_snek.size() -1; i > 0; i--) {
 		m_snek[i].follow(m_snek[i-1]);
@@ -66,5 +67,6 @@ void Snek::move(const sf::Vector2i& deltaPos, Board* brd) {
 void Snek::render(Board* brd) {
 	for (int i = 0; i < m_snek.size(); i++) {
 		m_snek[i].render(brd);
+		brd->setCellID(m_snek[i].getPosition(), 1);
 	}
 }

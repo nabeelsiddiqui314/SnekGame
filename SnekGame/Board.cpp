@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Board.h"
-#include <iostream>
 
 Board::Board(const sf::Vector2i& cellNumber, int cellWidth, const sf::Color& clr)
 	: m_brdVerts(sf::Quads, cellNumber.x * cellNumber.y * 4),
@@ -37,6 +36,8 @@ Board::Board(const sf::Vector2i& cellNumber, int cellWidth, const sf::Color& clr
 			yCount++;
 		}
 	}
+	m_cellIDs = new int[cellNumber.x * cellNumber.y];
+	memset(m_cellIDs, 0, cellNumber.x * cellNumber.y * sizeof(m_cellIDs[0]));
 }
 
 void Board::setCellColor(const sf::Vector2i& cell, const sf::Color& color) {
@@ -45,6 +46,16 @@ void Board::setCellColor(const sf::Vector2i& cell, const sf::Color& color) {
 	m_brdVerts[index + 1].color = color;
 	m_brdVerts[index + 2].color = color;
 	m_brdVerts[index + 3].color = color;
+}
+
+void Board::setCellID(const sf::Vector2i& cell, int id) {
+	int index = (cell.x + cell.y * m_cellNumber.x) * 4;
+	m_cellIDs[index] = id;
+}
+
+const int Board::getCellID(const sf::Vector2i& cell) const {
+	int index = (cell.x + cell.y * m_cellNumber.x) * 4;
+	return m_cellIDs[index];
 }
 
 void Board::render(sf::RenderWindow& window) {
