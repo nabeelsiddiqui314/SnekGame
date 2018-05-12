@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "data.h"
+#include "Board.h"
 #include "Snek.h"
 
 class Application
@@ -15,8 +15,8 @@ private:
 	void render();
 private:
 	sf::RenderWindow m_window;
-	sf::Vector2i     m_board[cellNumberX][cellNumberY];
-	Snek snek;
+	Board* m_board;
+	Snek m_snek;
 	sf::Vector2i m_velocity = {0, 0};
 	sf::Clock m_updateClock;
 };

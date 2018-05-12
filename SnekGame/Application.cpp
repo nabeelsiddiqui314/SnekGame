@@ -3,13 +3,8 @@
 
 
 Application::Application() {
-	for (int x = 0; x < cellNumberX; x++) {
-		for (int y = 0; y < cellNumberY; y++) {
-			m_board[x][y] = { x * cellWidth, y * cellWidth };
-		}
-	}
-
-	m_window.create(sf::VideoMode(cellNumberX * cellWidth, cellNumberY * cellWidth), "SnekGame", sf::Style::Close);
+	m_board = new Board({100, 60}, 10, sf::Color::Blue);
+	m_window.create(sf::VideoMode(1000, 600), "SnekGame", sf::Style::Close);
 }
 
 void Application::update(float deltaTime) {
@@ -27,16 +22,16 @@ void Application::update(float deltaTime) {
 	}
 
 	if (m_updateClock.getElapsedTime().asSeconds() > 0.2) {
-		snek.move(m_velocity);
+		m_snek.move(m_velocity);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
-			snek.grow();
+			m_snek.grow();
 		}
 		m_updateClock.restart();
 	}
 }
 
 void Application::render() {
-	snek.render(m_window);
+	m_snek.render(m_window);
 }
 
 void Application::run() {
@@ -48,8 +43,9 @@ void Application::run() {
 			}
 		}
 		m_window.clear(sf::Color(100, 100, 100));
-		update(1);
-		render();
+		//update(1);
+		//render();
+		m_board->render(m_window);
 		m_window.display();
 	}
 }

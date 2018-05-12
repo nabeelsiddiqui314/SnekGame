@@ -1,7 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "data.h"
-#include <array>
 
 class Snek
 {

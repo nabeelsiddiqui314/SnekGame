@@ -10,15 +10,13 @@ Snek::Segment::Segment() {
 		s_texInited = true;
 	}
 
-	m_segment.setSize({ static_cast<float>(cellWidth), static_cast<float>(cellWidth) });
+	//m_segment.setSize({ static_cast<float>(cellWidth), static_cast<float>(cellWidth) });
 	m_segment.setTexture(&s_texture);
-
-	//temp
 }
 
 void Snek::Segment::changePos(const sf::Vector2i& deltaPos) {
-	m_segment.setPosition(m_segment.getPosition().x + (deltaPos.x * cellWidth),
-		                  m_segment.getPosition().y + (deltaPos.y * cellWidth));
+	//m_segment.setPosition(m_segment.getPosition().x + (deltaPos.x * cellWidth),
+		                  //m_segment.getPosition().y + (deltaPos.y * cellWidth));
 }
 
 void Snek::Segment::follow(const Segment& other) {
@@ -55,8 +53,8 @@ void Snek::Segment::render(sf::RenderWindow& window) {
 Snek::Snek() {
 	m_snek.emplace_back();
 	m_snek.emplace_back();
-	m_snek[0].setPosition({cellWidth * 5, cellWidth * 5});
-	m_snek[1].setPosition({ cellWidth * 4, cellWidth * 5 });
+	//m_snek[0].setPosition({cellWidth * 5, cellWidth * 5});
+	//m_snek[1].setPosition({ cellWidth * 4, cellWidth * 5 });
 	m_snek[0].setType(Segment::HEAD);
 	m_snek[1].setType(Segment::TAIL);
 }
