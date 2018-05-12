@@ -16,7 +16,7 @@ private:
 private:
 	sf::RenderWindow m_window;
 	Board* m_board;
-	Snek m_snek;
+	Snek* m_snek;
 	sf::Vector2i m_velocity = {0, 0};
 	sf::Clock m_updateClock;
 };

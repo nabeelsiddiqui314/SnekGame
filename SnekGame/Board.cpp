@@ -3,13 +3,16 @@
 #include <iostream>
 
 Board::Board(const sf::Vector2i& cellNumber, int cellWidth, const sf::Color& clr)
-	: m_brdVerts(sf::Quads, cellNumber.x * cellNumber.y * 4) {
+	: m_brdVerts(sf::Quads, cellNumber.x * cellNumber.y * 4),
+      m_cellNumber(cellNumber),
+      m_cellWidth(cellWidth),
+      m_color(clr) {
 	int xCount = 0;
 	int yCount = 0;
 
 	for (int i = 0; i < cellNumber.x * cellNumber.y * 4; i+= 4) {
 		for (int j = 0; j < 4; j++) {
-			m_brdVerts[i + j].color = sf::Color(j * 50, j * 25, 255);
+			m_brdVerts[i + j].color = clr;
 		}
 
 		int x = xCount * cellWidth;
@@ -37,7 +40,11 @@ Board::Board(const sf::Vector2i& cellNumber, int cellWidth, const sf::Color& clr
 }
 
 void Board::setCellColor(const sf::Vector2i& cell, const sf::Color& color) {
-
+	int index = (cell.x + cell.y * m_cellNumber.x) * 4;
+	m_brdVerts[index].color = color;
+	m_brdVerts[index + 1].color = color;
+	m_brdVerts[index + 2].color = color;
+	m_brdVerts[index + 3].color = color;
 }
 
 void Board::render(sf::RenderWindow& window) {

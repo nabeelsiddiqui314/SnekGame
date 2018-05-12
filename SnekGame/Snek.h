@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Board.h"
 
 class Snek
 {
@@ -12,27 +13,25 @@ private:
 			TAIL
 		};
 	public:
-		Segment();
+		Segment(const sf::Vector2i& pos);
 	public:
 		void changePos(const sf::Vector2i& deltaPos);
 		void follow(const Segment& other);
 		void setType(const Type& type);
-		void setPosition(const sf::Vector2f& pos);
-		const sf::Vector2f& getPosition() const;
-		void render(sf::RenderWindow& window);
+		const sf::Vector2i& getPosition() const;
+		void render(Board* brd);
 	private:
-		sf::RectangleShape m_segment;
+		sf::Vector2i m_pos;
 		static sf::Texture s_texture;
 		static bool        s_texInited;
 	};
 public:
-	Snek();
+	Snek(const sf::Vector2i& pos);
 	~Snek() = default;
 public:
 	void grow();
-	void move(const sf::Vector2i& deltaPos);
-	void render(sf::RenderWindow& window);
+	void move(const sf::Vector2i& deltaPos, Board* brd);
+	void render(Board* brd);
 private:
 	std::vector<Segment> m_snek;
-
 };

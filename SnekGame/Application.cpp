@@ -3,7 +3,8 @@
 
 
 Application::Application() {
-	m_board = new Board({100, 60}, 10, sf::Color::Blue);
+	m_board = new Board({ 100, 60 }, 10, sf::Color::White);
+	m_snek = new Snek({1, 1});
 	m_window.create(sf::VideoMode(1000, 600), "SnekGame", sf::Style::Close);
 }
 
@@ -22,16 +23,17 @@ void Application::update(float deltaTime) {
 	}
 
 	if (m_updateClock.getElapsedTime().asSeconds() > 0.2) {
-		m_snek.move(m_velocity);
+		m_snek->move(m_velocity, m_board);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
-			m_snek.grow();
+			m_snek->grow();
 		}
+		m_snek->render(m_board);
 		m_updateClock.restart();
 	}
 }
 
 void Application::render() {
-	m_snek.render(m_window);
+	m_board->render(m_window);
 }
 
 void Application::run() {
@@ -43,9 +45,8 @@ void Application::run() {
 			}
 		}
 		m_window.clear(sf::Color(100, 100, 100));
-		//update(1);
-		//render();
-		m_board->render(m_window);
+		update(1);
+		render();
 		m_window.display();
 	}
 }
