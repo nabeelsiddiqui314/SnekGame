@@ -49,12 +49,12 @@ void Board::setCellColor(const sf::Vector2i& cell, const sf::Color& color) {
 }
 
 void Board::setCellID(const sf::Vector2i& cell, int id) {
-	int index = (cell.x + cell.y * m_cellNumber.x) * 4;
+	int index = (cell.x + cell.y * m_cellNumber.x);
 	m_cellIDs[index] = id;
 }
 
 const int Board::getCellID(const sf::Vector2i& cell) const {
-	int index = (cell.x + cell.y * m_cellNumber.x) * 4;
+	int index = (cell.x + cell.y * m_cellNumber.x);
 	return m_cellIDs[index];
 }
 

@@ -22,7 +22,7 @@ void Application::update(float deltaTime) {
 		m_velocity = { 1, 0 };
 	}
 
-	if (m_updateClock.getElapsedTime().asSeconds() > 0.2) {
+	if (m_updateClock.getElapsedTime().asMilliseconds() > deltaTime) {
 		m_snek->move(m_velocity, m_board);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
 			m_snek->grow();
@@ -45,7 +45,7 @@ void Application::run() {
 			}
 		}
 		m_window.clear(sf::Color(100, 100, 100));
-		update(1);
+		update(90);
 		render();
 		m_window.display();
 	}
