@@ -1,16 +1,8 @@
 #include "stdafx.h"
 #include "Snek.h"
 
-bool Snek::Segment::s_texInited = false;
-sf::Texture Snek::Segment::s_texture;
-
-Snek::Segment::Segment(const sf::Vector2i& pos) {
-	if (!s_texInited) {
-		Snek::Segment::s_texture.loadFromFile("./assets/graphics/snek.jpg");
-		s_texInited = true;
-	}
-	m_pos = pos;
-}
+Snek::Segment::Segment(const sf::Vector2i& pos) 
+: m_pos(pos) {}
 
 void Snek::Segment::changePos(const sf::Vector2i& deltaPos) {
 	m_pos.x += deltaPos.x;
@@ -39,11 +31,9 @@ const sf::Vector2i& Snek::Segment::getPosition() const {
 	return m_pos;
 }
 
-void Snek::Segment::render(Board* brd) {
-	brd->setCellColor(m_pos, sf::Color::Blue);
-}
-
-Snek::Snek(const sf::Vector2i& pos) {
+Snek::Snek(const sf::Vector2i& pos, const sf::Color& color, int id) 
+: m_id(id)
+, m_color(color) {
 	m_snek.emplace_back(pos);
 }
 
@@ -55,7 +45,7 @@ void Snek::move(const sf::Vector2i& deltaPos, Board* brd) {
 	if (deltaPos.x == 0 && deltaPos.y == 0)
 		return;
 
-	brd->setCellColor(m_snek[m_snek.size() - 1].getPosition(), sf::Color::White);
+	brd->resetColor(m_snek[m_snek.size() - 1].getPosition());
 	brd->setCellID(m_snek[m_snek.size() - 1].getPosition(), 0);
 
 	for (int i = m_snek.size() -1; i > 0; i--) {
@@ -66,7 +56,7 @@ void Snek::move(const sf::Vector2i& deltaPos, Board* brd) {
 
 void Snek::render(Board* brd) {
 	for (int i = 0; i < m_snek.size(); i++) {
-		m_snek[i].render(brd);
-		brd->setCellID(m_snek[i].getPosition(), 1);
+		brd->setCellColor(m_snek[i].getPosition(), m_color);
+		brd->setCellID(m_snek[i].getPosition(), m_id);
 	}
 }

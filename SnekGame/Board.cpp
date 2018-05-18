@@ -42,10 +42,12 @@ Board::Board(const sf::Vector2i& cellNumber, int cellWidth, const sf::Color& clr
 
 void Board::setCellColor(const sf::Vector2i& cell, const sf::Color& color) {
 	int index = (cell.x + cell.y * m_cellNumber.x) * 4;
-	m_brdVerts[index].color = color;
-	m_brdVerts[index + 1].color = color;
-	m_brdVerts[index + 2].color = color;
-	m_brdVerts[index + 3].color = color;
+	for (int i = index; i < index + 4; i++)
+		m_brdVerts[i].color = color;
+}
+
+void Board::resetColor(const sf::Vector2i& cell) {
+	setCellColor(cell, m_color);
 }
 
 void Board::setCellID(const sf::Vector2i& cell, int id) {

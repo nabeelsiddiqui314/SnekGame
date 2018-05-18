@@ -3,8 +3,8 @@
 
 
 Application::Application() {
-	m_board = new Board({ 100, 60 }, 10, sf::Color::White);
-	m_snek = new Snek({1, 1});
+	m_board = new Board({ 100, 60 }, 10, sf::Color::Black);
+	m_snek = new Snek({1, 1}, sf::Color::Green, 1);
 	m_window.create(sf::VideoMode(1000, 600), "SnekGame", sf::Style::Close);
 }
 
@@ -44,7 +44,7 @@ void Application::run() {
 				m_window.close();
 			}
 		}
-		m_window.clear(sf::Color(100, 100, 100));
+		m_window.clear();
 		update(90);
 		render();
 		m_window.display();
