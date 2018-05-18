@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Board.h"
 
-Board::Board(const sf::Vector2i& cellNumber, int cellWidth, const sf::Color& clr)
+Board::Board(const sf::Vector2i& cellNumber, int cellWidth, const sf::Vector2i& origin, int gap, const sf::Color& clr)
 	: m_brdVerts(sf::Quads, cellNumber.x * cellNumber.y * 4),
       m_cellNumber(cellNumber),
       m_cellWidth(cellWidth),
@@ -17,17 +17,20 @@ Board::Board(const sf::Vector2i& cellNumber, int cellWidth, const sf::Color& clr
 		int x = xCount * cellWidth;
 		int y = yCount * cellWidth;
 
-		m_brdVerts[i].position.x = x;
-		m_brdVerts[i].position.y = y;
+		int xPos = x + origin.x + xCount * gap;
+		int yPos = y + origin.y + yCount * gap;
 
-		m_brdVerts[i + 1].position.x = x + cellWidth;
-		m_brdVerts[i + 1].position.y = y;
+		m_brdVerts[i].position.x = xPos;
+		m_brdVerts[i].position.y = yPos;
 
-		m_brdVerts[i + 2].position.x = x + cellWidth;
-		m_brdVerts[i + 2].position.y = y + cellWidth;
+		m_brdVerts[i + 1].position.x = xPos + cellWidth;
+		m_brdVerts[i + 1].position.y = yPos;
 
-		m_brdVerts[i + 3].position.x = x;
-		m_brdVerts[i + 3].position.y = y + cellWidth;
+		m_brdVerts[i + 2].position.x = xPos + cellWidth;
+		m_brdVerts[i + 2].position.y = yPos + cellWidth;
+
+		m_brdVerts[i + 3].position.x = xPos;
+		m_brdVerts[i + 3].position.y = yPos + cellWidth;
 
 		xCount++;
 

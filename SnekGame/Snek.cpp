@@ -54,7 +54,7 @@ void Snek::move(const sf::Vector2i& deltaPos, Board* brd) {
 	m_snek[0].changePos(deltaPos);
 }
 
-void Snek::render(Board* brd) {
+void Snek::updateColor(Board* brd) {
 	for (int i = 0; i < m_snek.size(); i++) {
 		brd->setCellColor(m_snek[i].getPosition(), m_color);
 		brd->setCellID(m_snek[i].getPosition(), m_id);

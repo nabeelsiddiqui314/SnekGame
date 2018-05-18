@@ -28,7 +28,7 @@ public:
 public:
 	void grow();
 	void move(const sf::Vector2i& deltaPos, Board* brd);
-	void render(Board* brd);
+	void updateColor(Board* brd);
 private:
 	int m_id;
 	sf::Color m_color;
