@@ -19,5 +19,6 @@ private:
 	Snek* m_snek;
 	sf::Vector2i m_velocity = {0, 0};
 	sf::Clock m_updateClock;
+	bool m_isOver = false;
 };
 

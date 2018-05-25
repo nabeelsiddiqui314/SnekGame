@@ -63,6 +63,10 @@ const int Board::getCellID(const sf::Vector2i& cell) const {
 	return m_cellIDs[index];
 }
 
+const sf::Vector2i& Board::getCellNumber() const {
+	return m_cellNumber;
+}
+
 void Board::render(sf::RenderWindow& window) {
 	window.draw(m_brdVerts);
 }

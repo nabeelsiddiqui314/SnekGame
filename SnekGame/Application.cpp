@@ -3,7 +3,7 @@
 
 
 Application::Application() {
-	m_board = new Board({ 100, 60 }, 10, { 50, 70 }, 5, sf::Color::Black);
+	m_board = new Board({ 100, 60 }, 10, { 0, 0 }, 2, sf::Color::Black);
 	m_snek = new Snek({1, 1}, sf::Color::Green, 1);
 	m_window.create(sf::VideoMode(1000, 600), "SnekGame", sf::Style::Close);
 }
@@ -28,6 +28,9 @@ void Application::update(float deltaTime) {
 			m_snek->grow();
 		}
 		m_snek->updateColor(m_board);
+		if (m_snek->getNextCellID() > 0 || !m_snek->isInBounds(m_board)) {
+			m_isOver = true;
+		}
 		m_updateClock.restart();
 	}
 }
@@ -37,14 +40,14 @@ void Application::render() {
 }
 
 void Application::run() {
-	while (m_window.isOpen()) {
+	while (m_window.isOpen() && !m_isOver) {
 		sf::Event evnt;
 		while (m_window.pollEvent(evnt)) {
 			if (evnt.type == sf::Event::Closed) {
 				m_window.close();
 			}
 		}
-		m_window.clear(sf::Color::White);
+		m_window.clear();
 		update(90);
 		render();
 		m_window.display();

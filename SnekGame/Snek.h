@@ -29,8 +29,11 @@ public:
 	void grow();
 	void move(const sf::Vector2i& deltaPos, Board* brd);
 	void updateColor(Board* brd);
+	const int getNextCellID();
+	bool isInBounds(Board* brd);
 private:
-	int m_id;
+	const int m_id;
 	sf::Color m_color;
 	std::vector<Segment> m_snek;
+	int m_nextID;
 };

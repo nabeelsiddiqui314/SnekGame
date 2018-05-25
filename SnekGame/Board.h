@@ -10,6 +10,7 @@ public:
 	void resetColor(const sf::Vector2i& cell);
 	void setCellID(const sf::Vector2i& cell, int id);
 	const int getCellID(const sf::Vector2i& cell) const;
+	const sf::Vector2i& getCellNumber() const;
 	void render(sf::RenderWindow& window);
 private:
 	sf::VertexArray m_brdVerts;
