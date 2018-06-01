@@ -13,25 +13,11 @@ void Snek::Segment::follow(const Segment& other) {
 	m_pos = other.getPosition();
 }
 
-void Snek::Segment::setType(const Type& type) {
-	/*switch (type) {
-	case HEAD:
-		m_segment.setFillColor(sf::Color::Blue);
-		break;
-	case BODY:
-		m_segment.setFillColor(sf::Color::Green);
-		break;
-	case TAIL:
-		m_segment.setFillColor(sf::Color::Red);
-		break;
-	}*/
-}
-
 const sf::Vector2i& Snek::Segment::getPosition() const {
 	return m_pos;
 }
 
-Snek::Snek(const sf::Vector2i& pos, const sf::Color& color, int id) 
+Snek::Snek(const sf::Vector2i& pos, const sf::Color& color, const int id) 
 : m_id(id)
 , m_color(color) {
 	m_snek.emplace_back(pos);

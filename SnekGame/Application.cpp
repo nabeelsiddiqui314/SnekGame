@@ -5,7 +5,9 @@
 Application::Application() {
 	m_board = new Board({ 100, 60 }, 10, { 0, 0 }, 2, sf::Color::Black);
 	m_snek = new Snek({1, 1}, sf::Color::Green, 1);
+	m_fruit = new Collectable(sf::Color::Red, 2);
 	m_window.create(sf::VideoMode(1000, 600), "SnekGame", sf::Style::Close);
+	m_fruit->changepos(m_board);
 }
 
 void Application::update(float deltaTime) {
@@ -24,13 +26,24 @@ void Application::update(float deltaTime) {
 
 	if (m_updateClock.getElapsedTime().asMilliseconds() > deltaTime) {
 		m_snek->move(m_velocity, m_board);
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
-			m_snek->grow();
-		}
-		m_snek->updateColor(m_board);
-		if (m_snek->getNextCellID() > 0 || !m_snek->isInBounds(m_board)) {
+		if (!m_snek->isInBounds(m_board)) {
 			m_isOver = true;
 		}
+		else {
+			switch (m_snek->getNextCellID()) {
+			case 0:
+				break;
+			case 2:
+				m_snek->grow();
+				m_fruit->changepos(m_board);
+				break;
+			default:
+				m_isOver = true;
+				break;
+			}
+		}
+		m_fruit->updateColor(m_board);
+		m_snek->updateColor(m_board);
 		m_updateClock.restart();
 	}
 }
