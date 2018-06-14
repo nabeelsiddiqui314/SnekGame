@@ -156,6 +156,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Collectable.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Snek.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Collectable.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Snek.cpp" />
     <ClCompile Include="SnekGame.cpp" />
     <ClCompile Include="State.cpp" />

@@ -5,22 +5,22 @@ StateManager::StateManager() {
 	m_state = new State();
 }
 
-void StateManager::SetWindow(sf::RenderWindow& window) {
+void StateManager::setWindow(sf::RenderWindow& window) {
 	m_window = &window;
 }
 
-void StateManager::SetState(State* state) {
+void StateManager::setState(State* state) {
 	delete m_state;
 	m_state = state;
 }
 
-void StateManager::Update() {
-	m_state->HandleInput(*m_window);
-	m_state->Update(*m_window);
+void StateManager::update() {
+	m_state->handleInput(*m_window);
+	m_state->update(*m_window);
 }
 
-void StateManager::Render() {
-	m_state->Render(*m_window);
+void StateManager::render() {
+	m_state->render(*m_window);
 }
 
 StateManager::~StateManager() {
