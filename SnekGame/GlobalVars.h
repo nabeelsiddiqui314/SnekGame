@@ -7,5 +7,5 @@ struct vec2 {
 constexpr int cellWidth = 10;
 constexpr vec2 cellNumber = {100, 60};
 constexpr int cellGap = 1;
-constexpr vec2 screenSize = {cellWidth * cellNumber.x + cellGap * cellNumber.x, 
+constexpr vec2 screenSize = {cellWidth * cellNumber.x + cellGap * cellNumber.x,
                              cellWidth * cellNumber.y + cellGap * cellNumber.y };

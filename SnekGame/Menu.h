@@ -1,12 +1,12 @@
 #pragma once
 #include "State.h"
 #include "GlobalVars.h"
+#include "SinglePlayer.h"
 
 class Menu : public State
 {
 public:
 	Menu();
-	~Menu();
 public:
 	void handleInput(sf::RenderWindow& window) override;
 	void update(sf::RenderWindow& window) override;
@@ -22,6 +22,5 @@ private:
 	sf::Text m_title;
 	sf::Text m_options[3];
 	int m_selected = 0;
-	sf::Clock m_updateClock;
 };
 

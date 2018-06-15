@@ -31,6 +31,7 @@ void Menu::handleInput(sf::RenderWindow& window) {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
 		switch (m_selected) {
 		case 0:
+			stateManager.setState(new SinglePlayer());
 			break;
 		case 1:
 			break;
@@ -76,8 +77,4 @@ bool Menu::isDownPressed() {
 	bool Val = pressedNow && !m_pressedLastFrameDOWN;
 	m_pressedLastFrameDOWN = pressedNow;
 	return Val;
-}
-
-Menu::~Menu() {
-
 }
