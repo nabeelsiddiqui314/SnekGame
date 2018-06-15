@@ -8,6 +8,10 @@ Menu::Menu() {
 	m_options[1].setString("Multi-Player");
 	m_options[2].setString("Quit");
 	m_font.loadFromFile("font.ttf");
+
+	init_text(m_title, 120, 20);
+	for (int i = 0; i < 3; i++)
+		init_text(m_options[i], 60, (i * 80) + 200);
 }
 
 void Menu::handleInput(sf::RenderWindow& window) {
@@ -38,14 +42,6 @@ void Menu::handleInput(sf::RenderWindow& window) {
 }
 
 void Menu::update(sf::RenderWindow& window) {
-	if (m_first) {
-		init_text(m_title, window, 120, 20);
-		for (int i = 0; i < 3; i++) {
-			init_text(m_options[i], window, 60, (i * 80) + 200);
-		}
-		m_first = false;
-	}
-	
 	for (int i = 0; i < 3; i++) {
 		if (i == m_selected)
 			m_options[i].setFillColor(sf::Color::Green);
@@ -61,11 +57,11 @@ void Menu::render(sf::RenderWindow& window) {
 
 }
 
-void Menu::init_text(sf::Text& text, const sf::RenderWindow& window, unsigned int charSize, int ypos) {
+void Menu::init_text(sf::Text& text, unsigned int charSize, const int ypos) {
 	text.setFont(m_font);
 	text.setCharacterSize(charSize);
 	text.setFillColor(sf::Color::White);
-	text.setPosition(window.getSize().x /2 - text.getGlobalBounds().width /2, ypos);
+	text.setPosition( screenSize.x /2 - text.getGlobalBounds().width /2, ypos);
 }
 
 bool Menu::isUpPressed() {

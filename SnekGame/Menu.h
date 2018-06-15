@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-#include <iostream>
+#include "GlobalVars.h"
 
 class Menu : public State
 {
@@ -12,11 +12,10 @@ public:
 	void update(sf::RenderWindow& window) override;
 	void render(sf::RenderWindow& window) override;
 private:
-	void init_text(sf::Text& text, const sf::RenderWindow& window, unsigned int charSize, int ypos);
+	void init_text(sf::Text& text, unsigned int charSize, const int ypos);
 	bool isUpPressed();
 	bool isDownPressed();
 private:
-	bool m_first = true;
 	bool m_pressedLastFrameUP = false;
 	bool m_pressedLastFrameDOWN = false;
 	sf::Font m_font;

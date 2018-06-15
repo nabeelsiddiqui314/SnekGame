@@ -3,7 +3,7 @@
 
 
 Application::Application() {
-	m_window.create(sf::VideoMode(1000, 600), "SnekGame", sf::Style::Close);
+	m_window.create(sf::VideoMode(screenSize.x, screenSize.y), "SnekGame", sf::Style::Close);
 	stateManager.setWindow(m_window);
 	stateManager.setState(new Menu());
 }

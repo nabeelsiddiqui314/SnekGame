@@ -156,6 +156,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Collectable.h" />
+    <ClInclude Include="GlobalVars.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Snek.h" />
     <ClInclude Include="State.h" />
