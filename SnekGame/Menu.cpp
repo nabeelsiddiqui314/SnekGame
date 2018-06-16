@@ -34,6 +34,7 @@ void Menu::handleInput(sf::RenderWindow& window) {
 			stateManager.setState(new SinglePlayer());
 			break;
 		case 1:
+			stateManager.setState(new MultiPlayer());
 			break;
 		case 2:
 			window.close();

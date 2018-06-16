@@ -2,6 +2,7 @@
 #include "State.h"
 #include "GlobalVars.h"
 #include "SinglePlayer.h"
+#include "MultiPlayer.h"
 
 class Menu : public State
 {
