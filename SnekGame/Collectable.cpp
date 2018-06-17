@@ -25,3 +25,7 @@ void Collectable::updateColor(Board* brd) {
 	brd->setCellColor(m_pos, m_color);
 	brd->setCellID(m_pos, m_id);
 }
+
+const int Collectable::getID() const {
+	return m_id;
+}

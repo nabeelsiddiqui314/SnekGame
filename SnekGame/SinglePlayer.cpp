@@ -25,7 +25,7 @@ void SinglePlayer::update(sf::RenderWindow& window) {
 	if (m_updateClock.getElapsedTime().asMilliseconds() > 90) {
 		if (m_snek->isInBounds(m_board)) {
 			m_snek->move(m_direction, m_board);
-			if (m_snek->getNextCellID() == 2) {
+			if (m_snek->getNextCellID() == m_fruit->getID()) {
 				m_snek->grow();
 				m_fruit->changepos(m_board);
 			}

@@ -22,8 +22,9 @@ public:
 	void grow();
 	void move(const sf::Vector2i& deltaPos, Board* brd);
 	void updateColor(Board* brd);
-	const int getNextCellID();
-	bool isInBounds(Board* brd);
+	const int getNextCellID() const;
+	bool isInBounds(Board* brd) const;
+	const int getID() const;
 private:
 	const int m_id;
 	const sf::Color m_color;

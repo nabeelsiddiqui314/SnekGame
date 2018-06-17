@@ -9,6 +9,7 @@ public:
 public:
 	void changepos(Board* brd);
 	void updateColor(Board* brd);
+	const int getID() const;
 private:
 	const sf::Color m_color;
 	const int m_id;

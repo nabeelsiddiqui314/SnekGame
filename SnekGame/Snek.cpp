@@ -48,11 +48,15 @@ void Snek::updateColor(Board* brd) {
 	}
 }
 
-const int Snek::getNextCellID() {
+const int Snek::getNextCellID() const {
 	return m_nextID;
 }
 
-bool Snek::isInBounds(Board* brd) {
+bool Snek::isInBounds(Board* brd) const {
 	return m_snek[0].getPosition().x > 0 && m_snek[0].getPosition().x < brd->getCellNumber().x &&
 		   m_snek[0].getPosition().y > 0 && m_snek[0].getPosition().y < brd->getCellNumber().y - 1;
+}
+
+const int Snek::getID() const {
+	return m_id;
 }

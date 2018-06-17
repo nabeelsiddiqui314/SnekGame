@@ -1,10 +1,11 @@
 #pragma once
 #include "State.h"
-//#include "Menu.h"
+#include "Menu.h"
 #include "Board.h"
 #include "Snek.h"
 #include "Collectable.h"
 #include "GlobalVars.h"
+#include <iostream>
 
 class MultiPlayer : public State
 {
@@ -20,10 +21,13 @@ public:
 	void handleInput(sf::RenderWindow& window) override;
 	void update(sf::RenderWindow& window) override;
 	void render(sf::RenderWindow& window) override;
-public:
+private:
+	const int swap(const int num) const;
+	void end_game(const int winner);
+private:
 	Board* m_board;
 	Player m_players[2];
-	Collectable* m_fruits[2];
+	Collectable* m_fruit;
 	sf::Clock m_updateClock;
 };
 
