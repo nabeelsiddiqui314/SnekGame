@@ -24,5 +24,9 @@ private:
 	Collectable* m_fruit;
 	sf::Vector2i m_direction;
 	sf::Clock m_updateClock;
+	int m_score = 0;
+	sf::Font m_font;
+	sf::Text m_gameOver;
+	bool m_isGameOver = false;
 };
 

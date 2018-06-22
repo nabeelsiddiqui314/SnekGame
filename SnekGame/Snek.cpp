@@ -53,8 +53,8 @@ const int Snek::getNextCellID() const {
 }
 
 bool Snek::isInBounds(Board* brd) const {
-	return m_snek[0].getPosition().x > 0 && m_snek[0].getPosition().x < brd->getCellNumber().x &&
-		   m_snek[0].getPosition().y > 0 && m_snek[0].getPosition().y < brd->getCellNumber().y - 1;
+	return m_snek[0].getPosition().x >= 0 && m_snek[0].getPosition().x <= brd->getCellNumber().x-1 &&
+		   m_snek[0].getPosition().y >= 0 && m_snek[0].getPosition().y <= brd->getCellNumber().y-1;
 }
 
 const int Snek::getID() const {

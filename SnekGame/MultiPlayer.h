@@ -5,7 +5,6 @@
 #include "Snek.h"
 #include "Collectable.h"
 #include "GlobalVars.h"
-#include <iostream>
 
 class MultiPlayer : public State
 {
@@ -29,5 +28,8 @@ private:
 	Player m_players[2];
 	Collectable* m_fruit;
 	sf::Clock m_updateClock;
+	bool m_isGameOver = false;
+	sf::Font m_font;
+	sf::Text m_gameOver;
 };
 
