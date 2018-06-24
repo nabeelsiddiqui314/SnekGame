@@ -59,6 +59,9 @@ void Board::setCellID(const sf::Vector2i& cell, int id) {
 }
 
 const int Board::getCellID(const sf::Vector2i& cell) const {
+	if (cell.x < 0 || cell.y < 0 || cell.x > m_cellNumber.x-1 || cell.y > m_cellNumber.y-1)
+		return 0;
+
 	int index = (cell.x + cell.y * m_cellNumber.x);
 	return m_cellIDs[index];
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "State.h"
 #include "Menu.h"
+#include "GameOver.h"
 #include "Board.h"
 #include "Snek.h"
 #include "Collectable.h"
@@ -28,8 +29,5 @@ private:
 	Player m_players[2];
 	Collectable* m_fruit;
 	sf::Clock m_updateClock;
-	bool m_isGameOver = false;
-	sf::Font m_font;
-	sf::Text m_gameOver;
 };
 

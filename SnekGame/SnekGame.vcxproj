@@ -156,6 +156,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Collectable.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="GlobalVars.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MultiPlayer.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Collectable.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MultiPlayer.cpp" />
     <ClCompile Include="SinglePlayer.cpp" />

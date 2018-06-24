@@ -1,6 +1,7 @@
 #pragma once
 #include "State.h"
 #include "Menu.h"
+#include "GameOver.h"
 #include "GlobalVars.h"
 #include <memory>
 #include "Board.h"
@@ -25,8 +26,5 @@ private:
 	sf::Vector2i m_direction;
 	sf::Clock m_updateClock;
 	int m_score = 0;
-	sf::Font m_font;
-	sf::Text m_gameOver;
-	bool m_isGameOver = false;
 };
 

@@ -31,6 +31,12 @@ void Snek::move(const sf::Vector2i& deltaPos, Board* brd) {
 	if (deltaPos.x == 0 && deltaPos.y == 0)
 		return;
 
+	if (m_snek[0].getPosition().x + deltaPos.x < 0 || m_snek[0].getPosition().y + deltaPos.y < 0 ||
+		m_snek[0].getPosition().x + deltaPos.x > brd->getCellNumber().x - 1 || m_snek[0].getPosition().y + deltaPos.y > brd->getCellNumber().y - 1) {
+		m_isSnekIn = false;
+		return;
+	}
+
 	brd->resetColor(m_snek[m_snek.size() - 1].getPosition());
 	brd->setCellID(m_snek[m_snek.size() - 1].getPosition(), 0);
 
@@ -54,7 +60,8 @@ const int Snek::getNextCellID() const {
 
 bool Snek::isInBounds(Board* brd) const {
 	return m_snek[0].getPosition().x >= 0 && m_snek[0].getPosition().x <= brd->getCellNumber().x-1 &&
-		   m_snek[0].getPosition().y >= 0 && m_snek[0].getPosition().y <= brd->getCellNumber().y-1;
+		   m_snek[0].getPosition().y >= 0 && m_snek[0].getPosition().y <= brd->getCellNumber().y-1 &&
+		   m_isSnekIn;
 }
 
 const int Snek::getID() const {

@@ -30,4 +30,5 @@ private:
 	const sf::Color m_color;
 	std::vector<Segment> m_snek;
 	int m_nextID;
+	bool m_isSnekIn = true;
 };
